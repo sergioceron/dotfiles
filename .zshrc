@@ -105,6 +105,9 @@ function siq {
         export PS1="[siq]$PS1"
         export _SIQ_ENV_ENABLED=1
     fi
+    if [ -n "$1" ]; then
+        workon $1
+    fi
 }
 
 fortune -e
