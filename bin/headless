@@ -1,0 +1,5 @@
+#!/bin/sh
+
+/usr/bin/VBoxHeadless -startvm $1 &
+
+exit;

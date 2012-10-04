@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$1" == "--no-desktop" ]; then
+    if [ -d $2 ]; then
+        exec thunar $2
+        exit 0
+    fi
+elif [ -d $1 ]; then
+    exec thunar $1 
+    exit 0
+fi
+
+exec thunar  
+
+exit 0

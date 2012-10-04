@@ -1,0 +1,18 @@
+#!/bin/sh
+
+xrandr --output VGA1 --auto &
+(sleep 3 && $HOME/bin/paneldim && pypanel) &
+(sleep 5 && eval `cat $HOME/.fehbg`) &
+xfce4-clipman &
+batterymon --theme=gnome &
+bluetooth-applet &
+volumeicon &
+(sleep 2 && nm-applet --sm-disable) &
+skype &
+pidgin &
+if [ -r $HOME/.notifier.conf ]; then
+    gmail-notify &
+fi
+(sleep 10 && killall dropbox; dropboxd) &
+
+exit

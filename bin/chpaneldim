@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#purpose: Changes panel resolution
+
+killall pypanel & 
+$HOME/bin/autostart &
