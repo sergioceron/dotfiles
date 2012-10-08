@@ -83,9 +83,9 @@ alias please="sudo"
 function siq {
     # sets up virtualenv project path for work stuff directory. adds 
     # in a little reminder too.
-    if [ ! -d "$_SIQ_PROJECT_HOME" ]; then
+    while [ ! -d "$_SIQ_PROJECT_HOME" ]; do
         mount-work
-    fi
+    done
     if [ "$_SIQ_ENV_ENABLED" -ne 1 ]; then
         function desiq {
             if [ -n "$VIRTUAL_ENV" ]; then
@@ -107,6 +107,8 @@ function siq {
     fi
     if [ -n "$1" ]; then
         workon $1
+    else 
+        cd "$_SIQ_PROJECT_HOME"
     fi
 }
 
