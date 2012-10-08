@@ -1,0 +1,217 @@
+! aterm ---------------------------------------------------------------------
+
+!transparency and fg/bg
+aterm*fadeColor: black
+aterm*transparent: true
+aterm*shading: 25
+aterm*depth:24
+aterm*background: #000000
+aterm*foreground: #C7C7C7
+aterm*borderless: 1
+!font
+aterm*font:-*-clean-medium-r-normal-*-12-*-*-*-*-*-*-*
+aterm*boldFont:-*-clean-medium-r-normal-*-12-*-*-*-*-*-*-*
+!scrolling
+aterm*scrollBar: false
+aterm*saveLines: 10000
+!tabs
+!aterm*perl-ext-common: default,tabbed
+!cursor
+aterm*cursorBlink: true
+!colors
+!cursor
+!aterm*cursorColor: #FFAF00
+!black
+*color0:  #000000
+*color8:  #9999AA
+!red
+*color1:  #DE1923
+*color9:  #FF6050
+!green
+*color2:  #559933
+*color10: #66D077
+!yellow
+*color3:  #FF9922
+*color11: #FFFFAF
+!blue
+*color4:  #3579A8
+*color12: #4EB4FA
+!magenta
+*color5:  #BB88DD
+*color13: #D7AFD7
+!cyan
+*color6:  #00BBDD
+*color14: #0DEBFF
+!white
+*color7:  #C7C7C7
+*color15: #D9D9D9
+
+! urxvt ---------------------------------------------------------------------
+
+urxvt*termName:screen-256color
+urxvt*geometry: 105x30
+!transparency and fg/bg
+urxvt*fadeColor: black
+urxvt*transparent: true
+urxvt*shading: 25
+urxvt*depth:24
+urxvt*background: #000000
+urxvt*foreground: #C7C7C7
+urxvt*borderless: 1
+!font
+urxvt*font:-*-clean-medium-r-normal-*-12-*-*-*-*-*-*-*
+urxvt*boldFont:-*-clean-medium-r-normal-*-12-*-*-*-*-*-*-*
+!scrolling
+urxvt*scrollBar: false
+urxvt*saveLines: 10000
+!tabs
+!urxvt*perl-ext-common: default,tabbed
+!cursor
+urxvt*cursorBlink: true
+!colors
+!cursor
+!urxvt*cursorColor: #FFAF00
+!black
+*color0:  #000000
+*color8:  #9999AA
+!red
+*color1:  #DE1923
+*color9:  #FF6050
+!green
+*color2:  #559933
+*color10: #66D077
+!yellow
+*color3:  #FF9922
+*color11: #FFFFAF
+!blue
+*color4:  #3579A8
+*color12: #4EB4FA
+!magenta
+*color5:  #BB88DD
+*color13: #D7AFD7
+!cyan
+*color6:  #00BBDD
+*color14: #0DEBFF
+!white
+*color7:  #C7C7C7
+*color15: #D9D9D9
+
+! aterm-bg ---------------------------------------------------------------------
+
+!transparency and fg/bg
+aterm-bg*fadeColor: black
+aterm-bg*transparent: true
+aterm-bg*shading: 25
+aterm-bg*depth:24
+aterm-bg*background: #000000
+aterm-bg*foreground: #C7C7C7
+aterm-bg*borderless: 1
+!font
+aterm-bg*font:-*-clean-medium-r-normal-*-12-*-*-*-*-*-*-*
+aterm-bg*boldFont:-*-clean-medium-r-normal-*-12-*-*-*-*-*-*-*
+!scrolling
+aterm-bg*scrollBar: false
+aterm-bg*saveLines: 10000
+aterm-bg*cursorBlink: true
+aterm-bg*color0:  #000000
+aterm-bg*color8:  #9999AA
+!red
+aterm-bg*color1:  #DE1923
+aterm-bg*color9:  #FF6050
+!green
+aterm-bg*color2:  #559933
+aterm-bg*color10: #66D077
+!yellow
+aterm-bg*color3:  #FF9922
+aterm-bg*color11: #FFFFAF
+!blue
+aterm-bg*color4:  #3579A8
+aterm-bg*color12: #4EB4FA
+!magenta
+aterm-bg*color5:  #BB88DD
+aterm-bg*color13: #D7AFD7
+!cyan
+aterm-bg*color6:  #00BBDD
+aterm-bg*color14: #0DEBFF
+!white
+aterm-bg*color7:  #C7C7C7
+aterm-bg*color15: #D9D9D9
+
+! urxvt-bg ---------------------------------------------------------------------
+
+!transparency and fg/bg
+urxvt-bg*fadeColor: black
+urxvt-bg*transparent: true
+urxvt-bg*shading: 25
+urxvt-bg*depth:24
+urxvt-bg*background: #000000
+urxvt-bg*foreground: #C7C7C7
+urxvt-bg*borderless: 1
+!font
+urxvt-bg*font:-*-clean-medium-r-normal-*-12-*-*-*-*-*-*-*
+urxvt-bg*boldFont:-*-clean-medium-r-normal-*-12-*-*-*-*-*-*-*
+!scrolling
+urxvt-bg*scrollBar: false
+urxvt-bg*saveLines: 10000
+urxvt-bg*cursorBlink: true
+urxvt-bg*color0:  #000000
+urxvt-bg*color8:  #9999AA
+!red
+urxvt-bg*color1:  #DE1923
+urxvt-bg*color9:  #FF6050
+!green
+urxvt-bg*color2:  #559933
+urxvt-bg*color10: #66D077
+!yellow
+urxvt-bg*color3:  #FF9922
+urxvt-bg*color11: #FFFFAF
+!blue
+urxvt-bg*color4:  #3579A8
+urxvt-bg*color12: #4EB4FA
+!magenta
+urxvt-bg*color5:  #BB88DD
+urxvt-bg*color13: #D7AFD7
+!cyan
+urxvt-bg*color6:  #00BBDD
+urxvt-bg*color14: #0DEBFF
+!white
+urxvt-bg*color7:  #C7C7C7
+urxvt-bg*color15: #D9D9D9
+
+! xscreensaver ---------------------------------------------------------------
+
+!font settings
+xscreensaver.Dialog.headingFont:        -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont:           -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont:          -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont:          -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont:         -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont:           -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont:         -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground:         #ffffff
+xscreensaver.Dialog.background:         #111111
+xscreensaver.Dialog.topShadowColor:     #111111
+xscreensaver.Dialog.bottomShadowColor:  #111111
+xscreensaver.Dialog.Button.foreground:  #666666
+xscreensaver.Dialog.Button.background:  #ffffff
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground:    #666666
+xscreensaver.Dialog.text.background:    #ffffff
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        20
+xscreensaver.Dialog.shadowThickness:    2
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground:  #ff0000
+xscreensaver.passwd.thermometer.background:  #000000
+xscreensaver.passwd.thermometer.width:       8
+!datestamp format--see the strftime(3) manual page for details
+xscreensaver.dateFormat:    %H:%M %a %d %b, %Y
+
+! Xft settings ------------------------------------------------------------
+
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintsfull
