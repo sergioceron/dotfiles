@@ -1,6 +1,6 @@
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 #setopt notify
 #unsetopt beep nomatch
 setopt autocd
@@ -77,17 +77,17 @@ alias mount-dropbox="encfs $_DROPBOX_ENCFS_SOURCE $_DROPBOX_ENCFS_DEST"
 alias set_battery_thresholds="sudo set_battery_thresholds"
 
 # custom env vars
-alias work="cd $WORK"
 alias please="sudo"
+alias mkworkenv="work; mkvirtualenv --system-site-packages $@"
 
-function siq {
+function work {
     # sets up virtualenv project path for work stuff directory. adds 
     # in a little reminder too.
-    while [ ! -d "$_SIQ_PROJECT_HOME" ]; do
+    while [ ! -d "$_WORK_PROJECT_HOME/siq" ]; do
         mount-work
     done
-    if [ "$_SIQ_ENV_ENABLED" -ne 1 ]; then
-        function desiq {
+    if [ "$_WORK_ENV_ENABLED" -ne 1 ]; then
+        function dework {
             if [ -n "$VIRTUAL_ENV" ]; then
                 deactivate
             fi
@@ -97,19 +97,44 @@ function siq {
             if [ -n "$_PREV_PS1" ]; then
                 export PS1=$_PREV_PS1
             fi
-            export _SIQ_ENV_ENABLED=0
+            if [ -n "$_PREV_NON_WORK_PATH" ]; then
+                export PATH=$_PREV_NON_WORK_PATH
+            fi
+            export _WORK_ENV_ENABLED=0
         }
         export _PREV_PROJECT_HOME=$PROJECT_HOME
-        export PROJECT_HOME=$_SIQ_PROJECT_HOME
+        export PROJECT_HOME=$_WORK_PROJECT_HOME
         export _PREV_PS1=$PS1
-        export PS1="[siq]$PS1"
-        export _SIQ_ENV_ENABLED=1
+        export PS1="[work]$PS1"
+        export _WORK_ENV_ENABLED=1
+        export _PREV_NON_WORK_PATH=$PATH
+        export PATH=$_WORK_BIN_PATH:$PATH
     fi
     if [ -n "$1" ]; then
         workon $1
     else 
-        cd "$_SIQ_PROJECT_HOME"
+        cd "$_WORK_PROJECT_HOME"
     fi
 }
+
+function siq() {
+    work siq; 
+    if [ -n $1 ]; then
+        cd $1
+    fi
+    settitle ${PWD##*/}
+}
+
+function settitle() {
+    printf "\033k$1\033\\"
+}
+
+function ssh() {
+    settitle "$*"
+    command ssh "$@"
+    settitle ${PWD##*/}
+}
+
+settitle ${PWD##*/}
 
 fortune -e
