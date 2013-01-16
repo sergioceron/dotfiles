@@ -1,0 +1,14 @@
+#!/bin/bash
+
+mount | grep $_WORK_ENCFS_DEST >/dev/null
+[[ "$?" -eq "0" ]] && /usr/sbin/diskutil unmount $_WORK_ENCFS_DEST
+
+if [ ! -d $_WORK_ENCFS_DEST ]; then
+    echo "Create new mountpoint $_WORK_ENCFS_DEST"
+    mkdir $_WORK_ENCFS_DEST
+    chmod 0700 $_WORK_ENCFS_DEST
+fi
+
+encfs $_WORK_ENCFS_SOURCE $_WORK_ENCFS_DEST --extpass="security 2>&1 >/dev/null find-generic-password -gl 'mount-work' |grep password|cut -d \\\" -f 2"
+
+exit 0

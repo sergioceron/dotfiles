@@ -1,0 +1,14 @@
+#!/bin/bash
+
+mount | grep $_DROPBOX_ENCFS_DEST >/dev/null
+[[ "$?" -eq "0" ]] && /usr/sbin/diskutil unmount $_DROPBOX_ENCFS_DEST
+
+if [ ! -d $_DROPBOX_ENCFS_DEST ]; then
+    echo "Create new mountpoint $_DROPBOX_ENCFS_DEST"
+    mkdir $_DROPBOX_ENCFS_DEST
+    chmod 0700 $_DROPBOX_ENCFS_DEST
+fi
+
+encfs $_DROPBOX_ENCFS_SOURCE $_DROPBOX_ENCFS_DEST --extpass="security 2>&1 >/dev/null find-generic-password -gl 'mount-dropbox' |grep password|cut -d \\\" -f 2"
+
+exit 0

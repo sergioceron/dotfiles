@@ -6,21 +6,20 @@ SAVEHIST=10000
 setopt autocd
 
 autoload -Uz compinit
+autoload -U colors && colors
 compinit
 
 # End of lines added by compinstall
 
-eval `dircolors`
+#eval `dircolors`
 
 # PS1 and PS2
-#export PS1="$(print '%{\e[1;32m%}%n@%{\e[0m%}')$(print '%{\e[1;32m%}%M%{\e[0m%}') $(print '%{\e[1;34m%}%d $ %{\e[0m%}')"
-export PS1="$(print '%{\e[1;32m%}%n@%m%{\e[0m%}') $(print '%{\e[1;34m%}%1~%{\e[0m%}') $ "
-export PS2="$(print '%{\e[0;34m%}$%{\e[0m%}')"
+export PS1="%{$fg_bold[green]%}%n@%m%{$reset_color%} %{$fg_bold[blue]%}%1~%{$reset_color%} $ "
+#export PS1="%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} %{$fg_bold[blue]%}%1~%{$reset_color%} $ "
+export PS2="%{$fg[blue]%}$%{$reset_color%}"
 
 # Vars used later on by zsh
 export EDITOR=vim
-export BROWSER=firefox
-export XTERM=urxvt
 
 # allow approximate
 zstyle ':completion:*' completer _complete _match _approximate
@@ -54,27 +53,19 @@ bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
 
 
-alias ls='ls --color=auto'
+#alias ls='ls --color=auto'
 alias dir='ls -l'
 alias hist="grep '$1' ~/.histfile"
-alias startx="startx; exit"
 alias mv="mv -i"
 alias cp="cp -i"
 alias rm="rm -i"
-alias pacman="sudo pacman"
-alias netcfg2="sudo netcfg2"
-alias netcfg-menu="sudo netcfg-menu"
-alias poweroff="sudo poweroff"
-alias reboot="sudo reboot"
-alias shutdown="sudo shutdown"
-alias pm-suspend="sudo pm-suspend"
-alias pm-hibernate="sudo pm-hibernate"
-alias umount="sudo umount"
-alias tpfan-admin="sudo tpfan-admin"
-alias khartoumtun="ssh -ND 52000 -v khartoum"
-alias mount-work="encfs $_WORK_ENCFS_SOURCE $_WORK_ENCFS_DEST"
-alias mount-dropbox="encfs $_DROPBOX_ENCFS_SOURCE $_DROPBOX_ENCFS_DEST"
-alias set_battery_thresholds="sudo set_battery_thresholds"
+alias poweroff="sudo /sbin/halt"
+alias halt="sudo /sbin/halt"
+alias reboot="sudo /sbin/reboot"
+alias shutdown="sudo /sbin/shutdown"
+alias umount="sudo /sbin/umount"
+alias htop="sudo /usr/local/bin/htop"
+alias vimro="vim -R"
 
 # custom env vars
 alias please="sudo"
@@ -82,7 +73,7 @@ alias mkworkenv="work; mkvirtualenv --system-site-packages $@"
 
 function work {
     # sets up virtualenv project path for work stuff directory. adds 
-    # in a little reminder too.
+    # in a little reminder tag too.
     while [ ! -d "$_WORK_PROJECT_HOME/siq" ]; do
         mount-work
     done
@@ -119,20 +110,35 @@ function work {
 
 function siq() {
     work siq; 
-    if [ -n $1 ]; then
+    if [ -n "$1" ]; then
         cd $1
     fi
     settitle ${PWD##*/}
 }
+function _siq() { _files -W $_WORK_PROJECT_HOME/siq; }
+compdef _siq siq
 
 function settitle() {
-    printf "\033k$1\033\\"
+    if [ -n "$TMUX" ]; then
+        printf "\033k$1\033\\"
+    fi
 }
 
 function ssh() {
+    export _OLD_TERM=$TERM
+    cd $HOME
     settitle "$*"
+    if [ -n "$TMUX" ]; then
+        export TERM=xterm-256color
+    fi
     command ssh "$@"
+    export TERM=$_OLD_TERM
     settitle ${PWD##*/}
+}
+
+function nukepyc() {
+    find . -name \*.pyc
+    find . -name \*.pyc -delete
 }
 
 settitle ${PWD##*/}
