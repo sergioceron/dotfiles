@@ -55,7 +55,6 @@ bindkey '^[[8~' end-of-line
 
 #alias ls='ls --color=auto'
 alias dir='ls -l'
-alias hist="grep '$1' ~/.histfile"
 alias mv="mv -i"
 alias cp="cp -i"
 alias rm="rm -i"
@@ -70,6 +69,10 @@ alias vimro="vim -R"
 # custom env vars
 alias please="sudo"
 alias mkworkenv="work; mkvirtualenv --system-site-packages $@"
+
+function hist() {
+    egrep $1 ~/.histfile;
+}
 
 function work {
     # sets up virtualenv project path for work stuff directory. adds 
@@ -108,12 +111,27 @@ function work {
     fi
 }
 
+function siqrefresh() {
+    workdir=`pwd`
+
+    while [ ! -d "$_WORK_PROJECT_HOME/siq" ]; do
+        mount-work
+    done
+
+    for proj; do
+        cd "$_WORK_PROJECT_HOME/siq/$proj"
+        echo "Performing 'git pull -rebase' on $proj..."
+        git pull --rebase
+    done
+    cd "$workdir"
+}
+
 function siq() {
     work siq; 
     if [ -n "$1" ]; then
         cd $1
     fi
-    settitle ${PWD##*/}
+    settitle ${PWD##*/};
 }
 function _siq() { _files -W $_WORK_PROJECT_HOME/siq; }
 compdef _siq siq
