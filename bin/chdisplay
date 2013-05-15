@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -n "$1" ]; then
+   disper -i < "$HOME/.config/disper/$1"
+   exit
+fi
+
+if disper -l | grep -q 'DFP-3' ; then
+  # If the DisplayPort is connected (but the VGA port is not), then I'm
+  # going with the single DisplayPort setup.
+  echo "Configuring single external display"
+  disper -i < $HOME/.config/disper/dock
+else
+  # If neither monitors are connected, go with the laptop-only setup.
+  echo "Configuring laptop display"
+  disper -i < $HOME/.config/disper/laptop
+fi
+
+exit

@@ -1,0 +1,5 @@
+backend: nvidia
+associated displays: DFP-0, DFP-3
+metamode: DFP-3: nvidia-auto-select @1920x1200 +0+0
+scaling: stretched, stretched
+xinerama info order: DFP-3
