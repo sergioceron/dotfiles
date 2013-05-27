@@ -1,11 +1,5 @@
 #!/bin/sh
 
-if [ "$1" == 'seoul' ]; then
-    while [ ! -d "$_WORK_PROJECT_HOME/siq" ]; do
-        mount-work
-    done
-fi
-
 /usr/bin/VBoxHeadless -startvm $1 &
 
 exit
