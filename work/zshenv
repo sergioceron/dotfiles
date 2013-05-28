@@ -1,0 +1,4 @@
+SIQ_PROJECT_PATH=$HOME/Projects/siq
+
+export PATH=$SIQ_PROJECT_PATH/bake/bin:$PATH
+export BAKE_MODULES="spire.tasks mesh.tasks"

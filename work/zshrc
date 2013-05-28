@@ -1,5 +1,4 @@
-HISTFILE=~/.histfile
-HISTSIZE=10000
+HISTFILE=~/.histfile HISTSIZE=10000
 SAVEHIST=10000
 #setopt notify
 #unsetopt beep nomatch
@@ -64,62 +63,22 @@ alias reboot="sudo /sbin/reboot"
 alias shutdown="sudo /sbin/shutdown"
 alias umount="sudo /sbin/umount"
 alias htop="sudo /usr/local/bin/htop"
+alias apt-get="sudo apt-get"
+alias yum="sudo yum"
 alias vimro="vim -R"
 
 # custom env vars
 alias please="sudo"
-alias mkworkenv="work; mkvirtualenv --system-site-packages $@"
 
 function hist() {
     egrep $1 ~/.histfile;
 }
 
-function work {
-    # sets up virtualenv project path for work stuff directory. adds 
-    # in a little reminder tag too.
-    while [ ! -d "$_WORK_PROJECT_HOME/siq" ]; do
-        mount-work
-    done
-    if [ "$_WORK_ENV_ENABLED" -ne 1 ]; then
-        function dework {
-            if [ -n "$VIRTUAL_ENV" ]; then
-                deactivate
-            fi
-            if [ -n "$_PREV_PROJECT_HOME" ]; then
-                export PROJECT_HOME=$_PREV_PROJECT_HOME
-            fi
-            if [ -n "$_PREV_PS1" ]; then
-                export PS1=$_PREV_PS1
-            fi
-            if [ -n "$_PREV_NON_WORK_PATH" ]; then
-                export PATH=$_PREV_NON_WORK_PATH
-            fi
-            export _WORK_ENV_ENABLED=0
-        }
-        export _PREV_PROJECT_HOME=$PROJECT_HOME
-        export PROJECT_HOME=$_WORK_PROJECT_HOME
-        export _PREV_PS1=$PS1
-        export PS1="[work]$PS1"
-        export _WORK_ENV_ENABLED=1
-        export _PREV_NON_WORK_PATH=$PATH
-        export PATH=$_WORK_BIN_PATH:$PATH
-    fi
-    if [ -n "$1" ]; then
-        workon $1
-    else 
-        cd "$_WORK_PROJECT_HOME"
-    fi
-}
-
 function siqrefresh() {
     workdir=`pwd`
 
-    while [ ! -d "$_WORK_PROJECT_HOME/siq" ]; do
-        mount-work
-    done
-
     for proj; do
-        cd "$_WORK_PROJECT_HOME/siq/$proj"
+        cd "$SIQ_PROJECT_PATH/$proj"
         echo "Performing 'git pull -rebase' on $proj..."
         git pull --rebase
     done
@@ -127,13 +86,13 @@ function siqrefresh() {
 }
 
 function siq() {
-    work siq; 
+    cd $SIQ_PROJECT_PATH; 
     if [ -n "$1" ]; then
         cd $1
     fi
     settitle ${PWD##*/};
 }
-function _siq() { _files -W $_WORK_PROJECT_HOME/siq; }
+function _siq() { _files -W $SIQ_PROJECT_PATH; }
 compdef _siq siq
 
 function settitle() {
