@@ -86,14 +86,30 @@ function siqrefresh() {
 }
 
 function siq() {
-    cd $SIQ_PROJECT_PATH; 
-    if [ -n "$1" ]; then
+    workon siq
+    if [ ! "$_SIQ_OLD_PATH" ]; then
+        export _SIQ_OLD_PATH=$PATH
+        export PATH=$SIQ_PROJECT_PATH/bake/bin:$PATH
+    fi
+
+    export BAKE_MODULES="spire.tasks mesh.tasks"
+
+    if [ "$1" ]; then
         cd $1
     fi
     settitle ${PWD##*/};
 }
 function _siq() { _files -W $SIQ_PROJECT_PATH; }
 compdef _siq siq
+
+function desiq() {
+    if [ "$_SIQ_OLD_PATH" ]; then
+        export PATH=$_SIQ_OLD_PATH
+    fi
+    unset BAKE_MODULES
+    unset _SIQ_OLD_PATH
+    deactivate
+}
 
 function settitle() {
     if [ -n "$TMUX" ]; then

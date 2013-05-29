@@ -1,4 +1,10 @@
-SIQ_PROJECT_PATH=$HOME/Projects/siq
+# virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects
+source /usr/local/bin/virtualenvwrapper.sh 
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
 
-export PATH=$SIQ_PROJECT_PATH/bake/bin:$PATH
-export BAKE_MODULES="spire.tasks mesh.tasks"
+# work stuff
+export SIQ_PROJECT_PATH=$PROJECT_HOME/siq
