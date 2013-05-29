@@ -3,3 +3,4 @@
 
 proj_name=$(echo $VIRTUAL_ENV|awk -F'/' '{print $NF}')
 cd $PROJECT_HOME/$proj_name
+settitle ${PWD##*/}
