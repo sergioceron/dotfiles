@@ -87,11 +87,7 @@ function siqrefresh() {
 
 function siq() {
     workon siq
-    if [ ! "$_SIQ_OLD_PATH" ]; then
-        export _SIQ_OLD_PATH=$PATH
-        export PATH=$SIQ_PROJECT_PATH/bake/bin:$PATH
-    fi
-
+    export PATH=$SIQ_PROJECT_PATH/bake/bin:$PATH
     export BAKE_MODULES="spire.tasks mesh.tasks"
 
     if [ "$1" ]; then
@@ -103,11 +99,7 @@ function _siq() { _files -W $SIQ_PROJECT_PATH; }
 compdef _siq siq
 
 function desiq() {
-    if [ "$_SIQ_OLD_PATH" ]; then
-        export PATH=$_SIQ_OLD_PATH
-    fi
     unset BAKE_MODULES
-    unset _SIQ_OLD_PATH
     deactivate
 }
 
