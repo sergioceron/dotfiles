@@ -1,8 +1,11 @@
 # virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+_LOCAL_BIN=$HOME/.local/bin
+export VIRTUALENVWRAPPER_PYTHON=$_LOCAL_BIN/python
+export VIRTUALENVWRAPPER_VIRTUALENV=$_LOCAL_BIN/virtualenv
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
-source /usr/local/bin/virtualenvwrapper.sh 
+source $_LOCAL_BIN/virtualenvwrapper.sh 
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 

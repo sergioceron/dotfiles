@@ -52,7 +52,7 @@ bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
 
 
-#alias ls='ls --color=auto'
+alias ls='ls --color=auto'
 alias dir='ls -l'
 alias mv="mv -i"
 alias cp="cp -i"
@@ -66,9 +66,11 @@ alias htop="sudo /usr/bin/htop"
 alias apt-get="sudo apt-get"
 alias yum="sudo yum"
 alias vimro="vim -R"
+alias powertop="sudo /usr/sbin/powertop-1.13"
 
 # custom env vars
 alias please="sudo"
+alias ack="ack-grep"
 
 function hist() {
     egrep $1 ~/.histfile;
