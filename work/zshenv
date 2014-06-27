@@ -1,8 +1,6 @@
 # virtualenvwrapper
 _LOCAL_BIN=$HOME/.local/bin
 export VIRTUALENVWRAPPER_PYTHON=$_LOCAL_BIN/python
-export VIRTUALENVWRAPPER_VIRTUALENV=$_LOCAL_BIN/virtualenv
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
 source $_LOCAL_BIN/virtualenvwrapper.sh 
@@ -11,3 +9,6 @@ export PIP_RESPECT_VIRTUALENV=true
 
 # work stuff
 export SIQ_PROJECT_PATH=$PROJECT_HOME/siq
+#SSH_AUTH_SOCK=`/usr/sbin/ss -xl | grep -o '/tmp/keyring-.*/ssh'`
+SSH_AUTH_SOCK=`/usr/sbin/ss -xl | grep -o '/tmp/keyring-.*/socket.ssh'`
+[ -z "$SSH_AUTH_SOCK" ] || export SSH_AUTH_SOCK
