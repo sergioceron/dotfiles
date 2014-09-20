@@ -1,0 +1,37 @@
+#PATH=$PATH:/usr/local/share/python
+PATH=/usr/local/bin:$PATH
+PATH=$HOME/Scripts:$PATH
+PATH=$HOME/Projects/bake/bin:$PATH
+PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:/usr/local/Cellar/go/1.2/libexec/bin
+
+export PATH
+export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
+export ANDROID_HOME=/usr/local/opt/android-sdk
+export SCALA_HOME=/usr/local/opt/scala
+
+# some shell niceties
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
+# virtualenvwrapper
+export VIRTUALENVWRAPPER_PYTHON=$HOME/.local/bin/python
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects
+source $HOME/.local/bin/virtualenvwrapper.sh
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
+
+# encfs directories
+export _WORK_ENCFS_DEST=$HOME/Projects/work
+export _WORK_ENCFS_SOURCE=$HOME/Data/Dropbox/.work
+export _DROPBOX_ENCFS_DEST=$HOME/Dropbox/data
+export _DROPBOX_ENCFS_SOURCE=$HOME/Data/Dropbox/.data_esho
+
+# custom siq hooks
+export BAKE_MODULES="spire.tasks mesh.tasks"
+
+
+# go hooks
+unset _GOENV
+unset GOPATH
