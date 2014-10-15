@@ -1,25 +1,33 @@
 [user]
-    email = esho@deadpixels.org
+    email = 
     name = shola esho
 [github]
     user = esho
-    name = esho
+    name = shola esho
 [alias]
     br = branch
     ci = commit
+    cl = clone
     co = checkout
+    cobr = checkout -t
     cp = cherry-pick
     di = diff
+    dils = diff --name-status
     pr = pull --rebase
     st = status
+    rbm = rebase master
+    pbr = push --set-upstream origin # push branch upstream and track
 [color "diff"]
     meta = yellow bold
     frag = magenta bold
     old = red bold
     new = green bold
 [core]
-    excludesfile = ~/.gitignore
+    excludesfile = /Users/esho/.gitignore_global
 [color]
     ui = true
 [push]
     default = simple
+[filter "media"]
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
