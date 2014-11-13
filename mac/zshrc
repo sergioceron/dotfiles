@@ -145,4 +145,22 @@ function yabl() {
 function _yabl() { _files -W $HOME/p/yabl; }
 compdef _yabl yabl
 
+function mother() {
+    cd $HOME/p/mother
+
+    if [ "$1" ]; then
+        cd $1
+    fi
+    settitle
+}
+function _mother() { _files -W $HOME/p/mother; }
+compdef _mother mother
+
+function work() {
+    cd $HOME/Projects/$1
+    settitle $1
+}
+function _work() { _files -W $HOME/Projects; }
+compdef _work work 
+
 fortune -e

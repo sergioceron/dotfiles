@@ -2,7 +2,7 @@
 PATH=/usr/local/bin:$PATH
 PATH=$HOME/Scripts:$PATH
 PATH=$HOME/Projects/bake/bin:$PATH
-PATH=$PATH:$HOME/.local/bin
+#PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:/usr/local/Cellar/go/1.2/libexec/bin
 
 export PATH
